@@ -17,8 +17,6 @@ class AppController extends AbstractController
      */
     public function index(): Response
     {
-        return $this->render('internal/index.html.twig', [
-            'controller_name' => 'InternalController',
-        ]);
+        return $this->render('internal/index.html.twig');
     }
 }
