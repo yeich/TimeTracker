@@ -42,6 +42,7 @@ class Project
 
     /**
      * @ORM\ManyToOne(targetEntity=HourlyRate::class, inversedBy="projects")
+     * @ORM\JoinColumn(nullable=true)
      */
     private $hourly_rate;
 
@@ -52,7 +53,7 @@ class Project
 
     /**
      * @ORM\ManyToOne(targetEntity=ProjectState::class, inversedBy="projects")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=true)
      */
     private $state;
 
@@ -94,6 +95,13 @@ class Project
         $this->description = $description;
 
         return $this;
+    }
+
+    public function getUsers(): Collection {
+
+        $users = $this->workers;
+
+        return $users;
     }
 
     public function getManagement(): ?User

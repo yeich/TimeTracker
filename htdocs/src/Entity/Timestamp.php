@@ -19,7 +19,7 @@ abstract class Timestamp
     private $start_stamp;
 
     /**
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="datetime", nullable=true)
      */
     private $end_stamp;
 
@@ -37,6 +37,30 @@ abstract class Timestamp
     public function setUser(?User $user): self
     {
         $this->user = $user;
+
+        return $this;
+    }
+
+    public function getStartStamp(): ?\DateTime
+    {
+        return $this->start_stamp;
+    }
+
+    public function setStartStamp(\DateTime $start_stamp): self
+    {
+        $this->start_stamp = $start_stamp;
+
+        return $this;
+    }
+
+    public function getEndStamp(): ?\DateTime
+    {
+        return $this->end_stamp;
+    }
+
+    public function setEndStamp(\DateTime $end_stamp): self
+    {
+        $this->end_stamp = $end_stamp;
 
         return $this;
     }
