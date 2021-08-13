@@ -183,17 +183,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     }
 
     /**
-     * @return Collection|Project[]
-     */
-    public function getProjects(): Collection
-    {
-        return [
-            'management' => $this->projectsManagement,
-            'worker' => $this->projects
-        ];
-    }
-
-    /**
      * @return Collection|Timestamp[]
      */
     public function getTimestamps(): Collection
