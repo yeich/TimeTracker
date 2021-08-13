@@ -9,7 +9,7 @@
 
         <title>{% block title %}{% endblock %} | Time Tracker</title>
 
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/foundation-sites@6.6.3/dist/css/foundation.min.css" integrity="sha256-ogmFxjqiTMnZhxCqVmcqTvjfe1Y/ec4WaRj/aQPvn+I=" crossorigin="anonymous">
+        <link rel="stylesheet" href="{{ asset('public/_vendor/foundation/css/foundation.min.css') }}">
         <link rel="stylesheet" href="{{ asset('public/css/global.css') }}">
         {% block stylesheets %}
         {% endblock %}
@@ -19,7 +19,7 @@
 
         <script src="{{ asset('public/_vendor/jquery/jquery.min.js') }}"></script>
         <script src="{{ asset('public/_vendor/what-input/what-input.min.js') }}"></script>
-        <script src="https://cdn.jsdelivr.net/npm/foundation-sites@6.6.3/dist/js/foundation.min.js" integrity="sha256-pRF3zifJRA9jXGv++b06qwtSqX1byFQOLjqa2PTEb2o=" crossorigin="anonymous"></script>
+        <script src="{{ asset('public/_vendor/foundation/js/foundation.min.js') }}"></script>
 
         <script>
             $(document).foundation();
