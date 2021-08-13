@@ -5,7 +5,6 @@ namespace App\Controller;
 use App\Entity\TimestampProject;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
-use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
@@ -23,26 +22,78 @@ class ApiV1Controller extends AbstractController
         $user = $this->getUser();
 
         $timestamp = $em->getRepository('App:TimestampProject')->findOneBy(['user' => $user, 'end_stamp' => null]);
+        $project = null;
 
         if($timestamp) {
+
+            $timestamp_project = $timestamp->getProject();
+
+            $project = $em->getRepository('App:Project')->findOneById($projectId);
+
+            if(!$project) {
+
+                $timestamp->setEndStamp(new \DateTime('now'));
+                $em->persist($timestamp);
+                $em->flush();
+
+                return new JsonResponse([
+                    'error' => true,
+                    'msg' => 'No Project found!'
+                ]);
+            }
+
+            if($project === $timestamp_project) {
+                return new JsonResponse([
+                    'error' => false,
+                    'msg' => 'success',
+                    'type' => 'no changes'
+                ]);
+            }
+
             $timestamp->setEndStamp(new \DateTime('now'));
             $em->persist($timestamp);
+            $em->flush();
+        } else {
+
+            if($projectId == 'checkout') {
+
+                $em->flush();
+
+                return new JsonResponse([
+                    'error' => false,
+                    'msg' => 'success',
+                    'type' => 'checkout'
+                ]);
+            }
+
+            $project = $em->getRepository('App:Project')->findOneById($projectId);
+
+            if(!$project) {
+                return new JsonResponse([
+                    'error' => true,
+                    'msg' => 'No Project found!'
+                ]);
+            }
         }
 
-        $project = $em->getRepository('App:Project')->findOneById($projectId);
-
-        return new JsonResponse($project->getUsers());
-
-        if(!$project) {
+        if(!$project->getWorkers()->contains($user) || $project->getManagement() != $user) {
             return new JsonResponse([
                 'error' => true,
-                'msg' => 'No Project found!'
+                'msg' => 'Not your Project!'
             ]);
         }
 
         $timestamp = new TimestampProject();
         $timestamp->setProject($project);
+        $timestamp->setStartStamp(new \DateTime('now'));
+        $timestamp->setUser($user);
 
-        return new JsonResponse(['error' => false, 'msg' => 'success']);
+        $em->persist($timestamp);
+        $em->flush();
+
+        return new JsonResponse(['error' => false,
+            'msg' => 'success',
+            'type' => 'checkin'
+        ]);
     }
 }
