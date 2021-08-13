@@ -1,0 +1,15 @@
+.color-black {
+  color: #0a0a0a;
+}
+.color-black:hover {
+  color: #3d3d3d;
+}
+
+.powered-by {
+  font-size: 12px;
+}
+.powered-by a {
+  color: #1779ba;
+}
+
+/*# sourceMappingURL=global.css.map */

@@ -1,0 +1,15 @@
+.color-black {
+  color: #0a0a0a;
+
+  &:hover {
+    color: lighten(#0a0a0a, 20)
+  }
+}
+
+.powered-by {
+  font-size: 12px;
+
+  a {
+    color: #1779ba;
+  }
+}
