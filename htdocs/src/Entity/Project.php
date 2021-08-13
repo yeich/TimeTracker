@@ -62,10 +62,16 @@ class Project
      */
     private $timestampProjects;
 
+    /**
+     * @ORM\OneToMany(targetEntity=ProjectUpdate::class, mappedBy="project")
+     */
+    private $projectUpdates;
+
     public function __construct()
     {
         $this->workers = new ArrayCollection();
         $this->timestampProjects = new ArrayCollection();
+        $this->projectUpdates = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -200,6 +206,36 @@ class Project
             // set the owning side to null (unless already changed)
             if ($timestampProject->getProject() === $this) {
                 $timestampProject->setProject(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|ProjectUpdate[]
+     */
+    public function getProjectUpdates(): Collection
+    {
+        return $this->projectUpdates;
+    }
+
+    public function addProjectUpdate(ProjectUpdate $projectUpdate): self
+    {
+        if (!$this->projectUpdates->contains($projectUpdate)) {
+            $this->projectUpdates[] = $projectUpdate;
+            $projectUpdate->setProject($this);
+        }
+
+        return $this;
+    }
+
+    public function removeProjectUpdate(ProjectUpdate $projectUpdate): self
+    {
+        if ($this->projectUpdates->removeElement($projectUpdate)) {
+            // set the owning side to null (unless already changed)
+            if ($projectUpdate->getProject() === $this) {
+                $projectUpdate->setProject(null);
             }
         }
 
