@@ -34,12 +34,14 @@ security:
             # switch_user: true
 
     role_hierarchy:
-        ROLE_ADMIN: [ ROLE_USER ]
+        ROLE_ADMIN: [ ROLE_PROJECTMANAGER, ROLE_DEVELOPER, ROLE_USER ]
+        ROLE_PROJECTMANAGER: [ ROLE_DEVELOPER, ROLE_USER ]
+        ROLE_DEVELOPER: [ ROLE_USER ]
 
     # Easy way to control access for large sections of your site
     # Note: Only the *first* access control that matches will be used
     access_control:
          - { path: ^/app, roles: ROLE_USER }
          - { path: ^/api/v1, roles: ROLE_USER }
-         - { path: ^/app/project, roles: ROLE_ADMIN }
+         - { path: ^/app/project, roles: ROLE_PROJECTMANAGER }
          - { path: ^/app/user, roles: ROLE_ADMIN }
