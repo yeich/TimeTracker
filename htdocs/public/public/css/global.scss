@@ -1,3 +1,47 @@
+@import '_variables';
+
+#responsive-menu {
+  box-shadow: $box_shadow;
+
+  ul {
+    li {
+      &:not(.menu-text) {
+        width: 130px;
+        text-align: center;
+      }
+
+      color: $gray;
+
+      a {
+        color: $gray;
+      }
+
+      &:not(:last-of-type) {
+        margin-right: .5rem;
+      }
+
+      &:hover:not(.no-hover) {
+        a {
+          box-shadow: $box_shadow;
+        }
+      }
+
+      &.active {
+        a {
+          background-color: $active_color;
+          box-shadow: $box_shadow;
+        }
+      }
+    }
+  }
+}
+
+.top-bar,
+.top-bar ul {
+  background-color: #fff;
+}
+
+
 .color-black {
   color: #0a0a0a;
 

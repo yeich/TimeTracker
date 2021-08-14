@@ -1,4 +1,5 @@
 {% set utm_param_profq = 'profq.eu'|hash %}
+{% set route_name = app.request.attributes.get('_route') %}
 
 <!DOCTYPE html>
 <html class="no-js" lang="de">
@@ -15,6 +16,9 @@
         {% endblock %}
     </head>
     <body>
+
+        {% include '_components/navbar.html.twig' %}
+
         {% block body %}{% endblock %}
 
         <script src="{{ asset('public/_vendor/jquery/jquery.min.js') }}"></script>
