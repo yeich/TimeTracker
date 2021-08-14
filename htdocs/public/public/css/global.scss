@@ -1,5 +1,9 @@
 @import '_variables';
 
+body {
+  color: $gray;
+}
+
 #responsive-menu {
   box-shadow: $box_shadow;
 
@@ -56,4 +60,19 @@
   a {
     color: #1779ba;
   }
+}
+
+.button {
+  background-color: #fff;
+  color: $gray;
+
+  &:hover {
+    box-shadow: $box_shadow;
+    background-color: #fff;
+    color: $gray;
+  }
+}
+
+label {
+  color: $gray;
 }

@@ -5,5 +5,8 @@
   left: 50%;
   transform: translate(-50%, -50%);
 }
+.login-wrapper a {
+  color: #F15959;
+}
 
 /*# sourceMappingURL=login.css.map */
