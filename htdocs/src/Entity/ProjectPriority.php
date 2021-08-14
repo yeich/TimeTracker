@@ -2,15 +2,15 @@
 
 namespace App\Entity;
 
-use App\Repository\ProjectStateRepository;
+use App\Repository\ProjectPriorityRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass=ProjectStateRepository::class)
+ * @ORM\Entity(repositoryClass=ProjectPriorityRepository::class)
  */
-class ProjectState
+class ProjectPriority
 {
     /**
      * @ORM\Id
@@ -25,12 +25,12 @@ class ProjectState
     private $name;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="string", length=7)
      */
-    private $filled_quarters;
+    private $color_code;
 
     /**
-     * @ORM\OneToMany(targetEntity=Project::class, mappedBy="state")
+     * @ORM\OneToMany(targetEntity=Project::class, mappedBy="projectPriority")
      */
     private $projects;
 
@@ -56,14 +56,14 @@ class ProjectState
         return $this;
     }
 
-    public function getFilledQuarters(): ?int
+    public function getColorCode(): ?string
     {
-        return $this->filled_quarters;
+        return $this->color_code;
     }
 
-    public function setFilledQuarters(int $filled_quarters): self
+    public function setColorCode(string $color_code): self
     {
-        $this->filled_quarters = $filled_quarters;
+        $this->color_code = $color_code;
 
         return $this;
     }
@@ -80,7 +80,7 @@ class ProjectState
     {
         if (!$this->projects->contains($project)) {
             $this->projects[] = $project;
-            $project->setState($this);
+            $project->setProjectPriority($this);
         }
 
         return $this;
@@ -90,8 +90,8 @@ class ProjectState
     {
         if ($this->projects->removeElement($project)) {
             // set the owning side to null (unless already changed)
-            if ($project->getState() === $this) {
-                $project->setState(null);
+            if ($project->getProjectPriority() === $this) {
+                $project->setProjectPriority(null);
             }
         }
 

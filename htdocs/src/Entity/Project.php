@@ -67,6 +67,16 @@ class Project
      */
     private $projectUpdates;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=ProjectPriority::class, inversedBy="projects")
+     */
+    private $projectPriority;
+
+    /**
+     * @ORM\Column(type="date", nullable=true)
+     */
+    private $deadline;
+
     public function __construct()
     {
         $this->workers = new ArrayCollection();
@@ -238,6 +248,30 @@ class Project
                 $projectUpdate->setProject(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getProjectPriority(): ?ProjectPriority
+    {
+        return $this->projectPriority;
+    }
+
+    public function setProjectPriority(?ProjectPriority $projectPriority): self
+    {
+        $this->projectPriority = $projectPriority;
+
+        return $this;
+    }
+
+    public function getDeadline(): ?\DateTimeInterface
+    {
+        return $this->deadline;
+    }
+
+    public function setDeadline(?\DateTimeInterface $deadline): self
+    {
+        $this->deadline = $deadline;
 
         return $this;
     }
