@@ -36,7 +36,7 @@ class AppController extends AbstractController
             $cloned = clone $now;
 
             foreach ($project_timestamps as $project_timestamp) {
-                $cloned->add($project_timestamp->getStartStamp()->diff($project_timestamp->getEndStamp()));
+                $cloned->add($project_timestamp->getStartStamp()->diff(($project_timestamp->getEndStamp()) ? $project_timestamp->getEndStamp() : new \DateTime('now')));
             }
 
             $temp->{'total_time'} = ($now->diff($cloned))->format('%H:%I');

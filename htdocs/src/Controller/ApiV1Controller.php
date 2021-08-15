@@ -47,10 +47,21 @@ class ApiV1Controller extends AbstractController
                 $em->persist($timestamp);
                 $em->flush();
 
+                $now = new \DateTime('now');
+                $cloned = clone $now;
+
+                foreach ($project->getTimestampProjects() as $project_timestamp) {
+                    $cloned->add($project_timestamp->getStartStamp()->diff(($project_timestamp->getEndStamp()) ? $project_timestamp->getEndStamp() : new \DateTime('now')));
+                }
+
                 return new JsonResponse([
                     'error' => false,
                     'msg' => 'success',
-                    'type' => 'checkout'
+                    'type' => 'checkout',
+                    'data' => [
+                        'project_id' => $timestamp->getProject()->getId(),
+                        'total_time' => ($now->diff($cloned))->format('%H:%I')
+                    ]
                 ]);
             }
 
@@ -65,6 +76,8 @@ class ApiV1Controller extends AbstractController
             $timestamp->setEndStamp(new \DateTime('now'));
             $em->persist($timestamp);
             $em->flush();
+
+            $changed_project = true;
         } else {
 
             $project = $em->getRepository('App:Project')->findOneById($projectId);
@@ -75,6 +88,8 @@ class ApiV1Controller extends AbstractController
                     'msg' => 'No Project found!'
                 ]);
             }
+
+            $changed_project = true;
         }
 
         if(!$project->getWorkers()->contains($user) || $project->getManagement() != $user) {
@@ -92,9 +107,30 @@ class ApiV1Controller extends AbstractController
         $em->persist($timestamp);
         $em->flush();
 
-        return new JsonResponse(['error' => false,
-            'msg' => 'success',
-            'type' => 'checkin'
-        ]);
+        if($changed_project) {
+
+            $now = new \DateTime('now');
+            $cloned = clone $now;
+
+            foreach ($project->getTimestampProjects() as $project_timestamp) {
+                $cloned->add($project_timestamp->getStartStamp()->diff(($project_timestamp->getEndStamp()) ? $project_timestamp->getEndStamp() : new \DateTime('now')));
+            }
+
+            return new JsonResponse([
+                'error' => false,
+                'msg' => 'success',
+                'type' => 'checkin',
+                'data' => [
+                    'project_id' => $timestamp->getProject()->getId(),
+                    'total_time' => ($now->diff($cloned))->format('%H:%I')
+                ]
+            ]);
+        } else {
+            return new JsonResponse([
+                'error' => false,
+                'msg' => 'success',
+                'type' => 'checkin'
+            ]);
+        }
     }
 }

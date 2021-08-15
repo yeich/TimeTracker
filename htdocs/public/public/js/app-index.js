@@ -26,6 +26,13 @@ $(() => {
                    $target.attr('data-type', 'checkin');
                }
 
+               if(response.data) {
+
+                   let data = response.data;
+
+                   $('.project-item[data-project-id="' + data['project_id'] + '"]').find('.project-item-stats-time').text(data['total_time']);
+               }
+
            } else {
                alert('Error - Please check the console');
                console.log(response)
