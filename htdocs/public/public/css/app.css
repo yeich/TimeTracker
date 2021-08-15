@@ -33,6 +33,14 @@
   border-radius: 30px;
   width: 600px;
 }
+#app-index .project-list-wrapper .project-item.disabled-project {
+  border-color: rgba(112, 112, 112, 0.4);
+}
+#app-index .project-list-wrapper .project-item.disabled-project .project-item-header,
+#app-index .project-list-wrapper .project-item.disabled-project .project-item-footer,
+#app-index .project-list-wrapper .project-item.disabled-project .project-item-body > .project-item-deadline {
+  opacity: 0.4;
+}
 #app-index .project-list-wrapper .project-item.active-project .project-item-body .project-item-checkinout {
   color: rgba(255, 0, 0, 0.66);
 }
@@ -48,7 +56,6 @@
 #app-index .project-list-wrapper .project-item .project-item-header {
   display: flex;
   justify-content: space-between;
-  align-items: center;
   margin-bottom: 0.75rem;
 }
 #app-index .project-list-wrapper .project-item .project-item-header .project-item-name {
@@ -76,6 +83,7 @@
 }
 #app-index .project-list-wrapper .project-item .project-item-header .project-item-stats > *:first-of-type {
   width: 70px;
+  text-align: right;
 }
 #app-index .project-list-wrapper .project-item .project-item-header .project-item-stats > *:not(:last-of-type) {
   margin-right: 0.75rem;

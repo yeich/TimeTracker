@@ -52,6 +52,17 @@
 
       width: 600px;
 
+      &.disabled-project {
+
+        border-color: rgba($gray, .4);
+
+        .project-item-header,
+        .project-item-footer,
+        .project-item-body > .project-item-deadline {
+          opacity: .4;
+        }
+      }
+
       &.active-project {
         .project-item-body {
           .project-item-checkinout {
@@ -77,7 +88,7 @@
 
         display: flex;
         justify-content: space-between;
-        align-items: center;
+        //align-items: center;
 
         margin-bottom: .75rem;
 
@@ -113,6 +124,7 @@
 
             &:first-of-type {
               width: 70px;
+              text-align: right;
             }
 
             &:not(:last-of-type) {

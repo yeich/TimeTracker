@@ -24,7 +24,7 @@
 
                     <div class="project-list">
                         {% for project in projects %}
-                            <div class="project-item" data-project-id="{{ project.id }}" data-priority="">
+                            <div class="project-item{% if active_project %} {% if project.id == active_project %}active-project{% else %}disabled-project{% endif %}{% endif %}" data-project-id="{{ project.id }}">
                                 <div class="project-item-header">
                                     <div class="project-item-name">
                                         {{ project.name }}
@@ -34,7 +34,7 @@
                                         {% endif %}
                                     </div>
                                     <div class="project-item-stats">
-                                        <div class="project-item-stats-time">XXXX:XX</div>
+                                        <div class="project-item-stats-time">{{ project.total_time }}</div>
                                         <div data-tooltip class="top project-item-stats-prio" data-click-open="false" tabindex="2" title="{{ project.projectPriority.name }}">
                                             <span style="background-color: {{ project.projectPriority.colorCode }}"></span>
                                         </div>
@@ -49,7 +49,7 @@
                                     <div class="project-item-deadline">
                                         Deadline: {% if project.deadline %}{{ project.deadline|date("d.m.Y") }}{% else %}Unknown{% endif %}
                                     </div>
-                                    <div class="project-item-checkinout">
+                                    <div class="project-item-checkinout" data-type="{% if active_project %}{% if project.id == active_project %}checkout{% else %}checkin{% endif %}{% else %}checkin{% endif %}">
                                         {% include '_components/checkinout-svg.html.twig' %}
                                     </div>
                                 </div>
@@ -69,4 +69,8 @@
             <div class="cell large-5 large-offset-1">2</div>
         </div>
     </div>
+{% endblock %}
+
+{% block javascripts %}
+    <script src="{{ asset('public/js/app-index.js') }}"></script>
 {% endblock %}

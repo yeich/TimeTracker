@@ -13,16 +13,15 @@ use Symfony\Component\Routing\Annotation\Route;
 class ApiV1Controller extends AbstractController
 {
     /**
-     * @Route("/project/tracking/{projectId}", name="api_v1_project_tracking", methods={"GET"})
+     * @Route("/project/tracking/{projectId}/{type}", name="api_v1_project_tracking", methods={"GET"}, options={"expose"=true})
      */
-    public function projectTracking($projectId): JsonResponse
+    public function projectTracking($projectId, $type): JsonResponse
     {
         
         $em = $this->getDoctrine()->getManager();
         $user = $this->getUser();
 
         $timestamp = $em->getRepository('App:TimestampProject')->findOneBy(['user' => $user, 'end_stamp' => null]);
-        $project = null;
 
         if($timestamp) {
 
@@ -42,6 +41,19 @@ class ApiV1Controller extends AbstractController
                 ]);
             }
 
+            if($type == 'checkout') {
+
+                $timestamp->setEndStamp(new \DateTime('now'));
+                $em->persist($timestamp);
+                $em->flush();
+
+                return new JsonResponse([
+                    'error' => false,
+                    'msg' => 'success',
+                    'type' => 'checkout'
+                ]);
+            }
+
             if($project === $timestamp_project) {
                 return new JsonResponse([
                     'error' => false,
@@ -54,17 +66,6 @@ class ApiV1Controller extends AbstractController
             $em->persist($timestamp);
             $em->flush();
         } else {
-
-            if($projectId == 'checkout') {
-
-                $em->flush();
-
-                return new JsonResponse([
-                    'error' => false,
-                    'msg' => 'success',
-                    'type' => 'checkout'
-                ]);
-            }
 
             $project = $em->getRepository('App:Project')->findOneById($projectId);
 
