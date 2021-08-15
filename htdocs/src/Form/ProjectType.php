@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\Project;
 use App\Entity\ProjectPriority;
+use App\Entity\ProjectState;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
@@ -29,6 +30,7 @@ class ProjectType extends AbstractType
             ])
             ->add('management', EntityType::class, [
                 'class' => User::class,
+                'required' => true,
                 'choice_label' => function(User $user) {
                     return sprintf('%s %s (%s)', $user->getFirstname(), $user->getLastname(), $user->getEmail());
                 }
@@ -43,13 +45,20 @@ class ProjectType extends AbstractType
             ])
             ->add('projectPriority', EntityType::class, [
                 'class' => ProjectPriority::class,
+                'required' => true,
                 'choice_label' => function(ProjectPriority $projectPriority) {
                     return sprintf('%s', $projectPriority->getName());
                 }
             ])
             ->add('deadline')
 //            ->add('hourly_rate')
-//            ->add('state')
+            ->add('state', EntityType::class, [
+                'class' => ProjectState::class,
+                'required' => true,
+                'choice_label' => function(ProjectState $projectState) {
+                    return sprintf('%s', $projectState->getName());
+                }
+            ]);
         ;
     }
 
