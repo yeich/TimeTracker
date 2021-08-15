@@ -37,6 +37,9 @@
         <script src="{{ asset('public/_vendor/what-input/what-input.min.js') }}"></script>
         <script src="{{ asset('public/_vendor/foundation/js/foundation.min.js') }}"></script>
 
+        <script src="{{ asset('bundles/fosjsrouting/js/router.min.js') }}"></script>
+        <script src="{{ path('fos_js_routing_js', { callback: 'fos.Router.setData' }) }}"></script>
+
         <script>
             $(document).foundation();
         </script>
