@@ -16,7 +16,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class ProjectController extends AbstractController
 {
     /**
-     * @Route("/", name="project_index", methods={"GET"})
+     * @Route("/", name="app_app_project_index", methods={"GET"})
      */
     public function index(ProjectRepository $projectRepository): Response
     {
@@ -26,7 +26,7 @@ class ProjectController extends AbstractController
     }
 
     /**
-     * @Route("/new", name="project_new", methods={"GET","POST"})
+     * @Route("/new", name="app_project_new", methods={"GET","POST"})
      */
     public function new(Request $request): Response
     {
@@ -39,7 +39,7 @@ class ProjectController extends AbstractController
             $entityManager->persist($project);
             $entityManager->flush();
 
-            return $this->redirectToRoute('project_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('app_project_index', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->renderForm('project/new.html.twig', [
@@ -49,7 +49,7 @@ class ProjectController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="project_show", methods={"GET"})
+     * @Route("/{id}", name="app_project_show", methods={"GET"})
      */
     public function show(Project $project): Response
     {
@@ -59,7 +59,7 @@ class ProjectController extends AbstractController
     }
 
     /**
-     * @Route("/{id}/edit", name="project_edit", methods={"GET","POST"})
+     * @Route("/{id}/edit", name="app_project_edit", methods={"GET","POST"})
      */
     public function edit(Request $request, Project $project): Response
     {
@@ -69,7 +69,7 @@ class ProjectController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('project_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('app_project_index', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->renderForm('project/edit.html.twig', [
@@ -79,7 +79,7 @@ class ProjectController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="project_delete", methods={"POST"})
+     * @Route("/{id}", name="app_project_delete", methods={"POST"})
      */
     public function delete(Request $request, Project $project): Response
     {
@@ -89,6 +89,6 @@ class ProjectController extends AbstractController
             $entityManager->flush();
         }
 
-        return $this->redirectToRoute('project_index', [], Response::HTTP_SEE_OTHER);
+        return $this->redirectToRoute('app_project_index', [], Response::HTTP_SEE_OTHER);
     }
 }
