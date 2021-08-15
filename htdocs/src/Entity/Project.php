@@ -30,7 +30,7 @@ class Project
     private $description;
 
     /**
-     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="projects")
+     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="projectsManagement")
      * @ORM\JoinColumn(nullable=false)
      */
     private $management;
