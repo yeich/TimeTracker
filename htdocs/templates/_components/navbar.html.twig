@@ -9,7 +9,7 @@
             <li class="menu-text">CORPORATE LOGO</li>
             <li {% if route_name == 'app_index' %}class="active"{% endif %}><a href="{% if route_name == 'app_index' %}#app-index{% else %}{{ path('app_index') }}{% endif %}">Board</a></li>
             <li><a href="#">Teams</a></li>
-            <li><a href="#">Project</a></li>
+            <li {% if 'app_project' in route_name %}class="active"{% endif %}><a href="{% if 'app_project' in route_name %}#app-project-index{% else %}{{ path('app_project_index') }}{% endif %}">Project</a></li>
             <li><a href="#">Timer</a></li>
         </ul>
     </div>
