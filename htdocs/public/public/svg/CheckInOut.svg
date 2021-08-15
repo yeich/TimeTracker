@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="7" height="8" viewBox="0 0 7 8">
+  <defs>
+    <style>
+      .triangle-wrapper {
+        fill: #fff;
+        mix-blend-mode: darken;
+        isolation: isolate;
+      }
+
+      .triangle-custom,
+      .triangle-stroke {
+        stroke: none;
+      }
+
+      .triangle-stroke {
+        fill: rgba(0,0,0,1);
+      }
+    </style>
+  </defs>
+  <g id="Polygon_2" data-name="Polygon 2" class="triangle-wrapper" transform="translate(7) rotate(90)">
+    <path class="triangle-custom" d="M4,0,8,7H0Z"/>
+    <path class="triangle-stroke" d="M 3.999999761581421 2.015560150146484 L 1.723176956176758 6 L 6.276822566986084 6 L 3.999999761581421 2.015560150146484 M 3.999999761581421 0 L 8 7 L -4.76837158203125e-07 7 L 3.999999761581421 0 Z"/>
+  </g>
+</svg>

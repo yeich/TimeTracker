@@ -1,0 +1,145 @@
+#app-index .project-list-wrapper .has-tip {
+  font-weight: unset;
+  border-bottom: 0;
+}
+#app-index .project-list-wrapper .project-list-sort {
+  font-size: 14px;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+  padding: 0 15px;
+}
+#app-index .project-list-wrapper .project-list-sort ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+#app-index .project-list-wrapper .project-list-sort ul li {
+  line-height: 1.1;
+  text-align: center;
+  width: 45px;
+}
+#app-index .project-list-wrapper .project-list-sort ul li:first-of-type {
+  width: 70px;
+}
+#app-index .project-list-wrapper .project-list-sort ul li:not(:last-of-type) {
+  margin-right: 0.75rem;
+}
+#app-index .project-list-wrapper .project-item {
+  border: 2px solid #707070;
+  padding: 15px;
+  border-radius: 30px;
+}
+#app-index .project-list-wrapper .project-item.active-project .project-item-body .project-item-checkinout {
+  color: rgba(255, 0, 0, 0.66);
+}
+#app-index .project-list-wrapper .project-item.active-project .project-item-body .project-item-checkinout:before {
+  content: "Check out";
+}
+#app-index .project-list-wrapper .project-item.active-project .project-item-body .project-item-checkinout .triangle-stroke {
+  fill: rgba(255, 0, 0, 0.66);
+}
+#app-index .project-list-wrapper .project-item:not(:last-of-type) {
+  margin-bottom: 2rem;
+}
+#app-index .project-list-wrapper .project-item .project-item-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.75rem;
+}
+#app-index .project-list-wrapper .project-item .project-item-header .project-item-name {
+  font-weight: 500;
+  font-size: 20px;
+}
+#app-index .project-list-wrapper .project-item .project-item-header .project-item-name > span {
+  font-weight: 400;
+  font-size: 14px;
+  width: 300px;
+  display: block;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+#app-index .project-list-wrapper .project-item .project-item-header .project-item-stats > * {
+  display: inline-block;
+  text-align: center;
+  width: 45px;
+  position: relative;
+}
+#app-index .project-list-wrapper .project-item .project-item-header .project-item-stats > *:first-of-type {
+  width: 70px;
+}
+#app-index .project-list-wrapper .project-item .project-item-header .project-item-stats > *:not(:last-of-type) {
+  margin-right: 0.75rem;
+}
+#app-index .project-list-wrapper .project-item .project-item-header .project-item-stats-time {
+  font-weight: 500;
+}
+#app-index .project-list-wrapper .project-item .project-item-header .project-item-stats-status {
+  display: inline-flex !important;
+  justify-content: center;
+}
+#app-index .project-list-wrapper .project-item .project-item-header .project-item-stats-status > span {
+  width: 10px;
+  height: 10px;
+  border: 1px solid #707070;
+  display: block;
+}
+#app-index .project-list-wrapper .project-item .project-item-header .project-item-stats-status > span.filled {
+  background-color: #707070;
+}
+#app-index .project-list-wrapper .project-item .project-item-header .project-item-stats-status > span:not(:last-of-type) {
+  margin-right: 3px;
+}
+#app-index .project-list-wrapper .project-item .project-item-header .project-item-stats-prio {
+  display: inline-flex !important;
+  justify-content: center;
+}
+#app-index .project-list-wrapper .project-item .project-item-header .project-item-stats-prio > span {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: rgba(112, 112, 112, 0.2);
+}
+#app-index .project-list-wrapper .project-item .project-item-body {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.75rem;
+}
+#app-index .project-list-wrapper .project-item .project-item-body .project-item-deadline {
+  font-weight: 500;
+  width: 50%;
+}
+#app-index .project-list-wrapper .project-item .project-item-body .project-item-checkinout {
+  border: 1px solid #707070;
+  box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.16);
+  padding: 5px 10px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+#app-index .project-list-wrapper .project-item .project-item-body .project-item-checkinout:before {
+  content: "Check in";
+  font-weight: 500;
+}
+#app-index .project-list-wrapper .project-item .project-item-body .project-item-checkinout svg {
+  width: 8px;
+  height: 10px;
+}
+#app-index .project-list-wrapper .project-item .project-item-body .project-item-checkinout svg .triangle-stroke {
+  fill: #707070;
+}
+#app-index .project-list-wrapper .project-item .project-item-footer .project-item-projectmanagement {
+  font-weight: 500;
+}
+#app-index .project-list-wrapper .project-item .project-item-footer .project-item-projectmanagement > a {
+  font-weight: 400;
+  padding: 5px 10px;
+  box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.16);
+  border-radius: 10px;
+  color: #707070;
+}
+
+/*# sourceMappingURL=app.css.map */

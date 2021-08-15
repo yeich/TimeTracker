@@ -17,6 +17,14 @@ class AppController extends AbstractController
      */
     public function index(): Response
     {
-        return $this->render('internal/index.html.twig');
+
+        $em = $this->getDoctrine()->getManager();
+        $user = $this->getUser();
+
+        $projects = $em->getRepository('App:Project')->findAllUserProjects($user);
+
+        return $this->render('internal/index.html.twig', [
+            'projects' => $projects
+        ]);
     }
 }

@@ -1,0 +1,210 @@
+@import '_variables';
+
+#app-index {
+  .project-list-wrapper {
+
+    .has-tip {
+      font-weight: unset;
+      border-bottom: 0;
+    }
+
+    .project-list-sort {
+
+      font-size: 14px;
+      display: flex;
+      justify-content: space-between;
+
+      margin-bottom: 1rem;
+
+      padding: 0 15px;
+
+      ul {
+
+        list-style: none;
+        margin: 0;
+        padding: 0;
+
+        display: flex;
+
+        li {
+          line-height: 1.1;
+          text-align: center;
+          width: 45px;
+
+          &:first-of-type {
+            width: 70px;
+          }
+
+          &:not(:last-of-type) {
+            margin-right: .75rem;
+          }
+        }
+      }
+    }
+
+    .project-item {
+
+      border: 2px solid $gray;
+      padding: 15px;
+      border-radius: 30px;
+
+      &.active-project {
+        .project-item-body {
+          .project-item-checkinout {
+
+            color: rgba(255,0,0,.66);
+
+            &:before {
+              content: 'Check out';
+            }
+
+            .triangle-stroke {
+              fill: rgba(255,0,0,.66);
+            }
+          }
+        }
+      }
+
+      &:not(:last-of-type) {
+        margin-bottom: 2rem;
+      }
+
+      .project-item-header {
+
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        margin-bottom: .75rem;
+
+        .project-item-name {
+
+          font-weight: 500;
+          font-size: 20px;
+
+          >span {
+            font-weight: 400;
+            font-size: 14px;
+            width: 300px;
+            display: block;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+          }
+        }
+
+        .project-item-stats {
+          >* {
+            display: inline-block;
+            text-align: center;
+
+            width: 45px;
+
+            position: relative;
+
+            &:first-of-type {
+              width: 70px;
+            }
+
+            &:not(:last-of-type) {
+              margin-right: .75rem;
+            }
+          }
+        }
+
+        .project-item-stats-time {
+          font-weight: 500;
+        }
+
+        .project-item-stats-status {
+
+          display: inline-flex!important;
+          justify-content: center;
+
+          >span {
+
+            width: 10px;
+            height: 10px;
+            border: 1px solid $gray;
+            display: block;
+
+            &.filled {
+              background-color: $gray;
+            }
+
+            &:not(:last-of-type) {
+              margin-right: 3px;
+            }
+          }
+        }
+
+        .project-item-stats-prio {
+
+          display: inline-flex!important;
+          justify-content: center;
+
+          >span {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: rgba($gray, .2);
+          }
+        }
+      }
+
+      .project-item-body {
+
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        margin-bottom: .75rem;
+
+        .project-item-deadline {
+          font-weight: 500;
+          width: 50%;
+        }
+
+        .project-item-checkinout {
+
+          border: 1px solid $gray;
+          box-shadow: $box_shadow;
+          padding: 5px 10px;
+          border-radius: 10px;
+
+          cursor: pointer;
+
+          &:before {
+            content: 'Check in';
+            font-weight: 500;
+          }
+
+          svg {
+
+            width: 8px;
+            height: 10px;
+
+            .triangle-stroke {
+              fill: $gray;
+            }
+          }
+        }
+      }
+
+      .project-item-footer {
+        .project-item-projectmanagement {
+
+          font-weight: 500;
+
+          >a {
+            font-weight: 400;
+            padding: 5px 10px;
+            box-shadow: $box_shadow;
+            border-radius: 10px;
+            color: $gray;
+          }
+        }
+      }
+    }
+  }
+}
