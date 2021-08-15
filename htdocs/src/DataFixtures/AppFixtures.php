@@ -27,16 +27,19 @@ class AppFixtures extends Fixture
         $projectPriority = new ProjectPriority();
         $projectPriority->setName('Low');
         $projectPriority->setColorCode('#00f218');
+        $projectPriority->setPriority(1);
         $manager->persist($projectPriority);
 
         $projectPriority = new ProjectPriority();
         $projectPriority->setName('Medium');
         $projectPriority->setColorCode('#F9BF00');
+        $projectPriority->setPriority(2);
         $manager->persist($projectPriority);
 
         $projectPriority = new ProjectPriority();
         $projectPriority->setName('High');
         $projectPriority->setColorCode('#F20000');
+        $projectPriority->setPriority(3);
         $manager->persist($projectPriority);
 
 

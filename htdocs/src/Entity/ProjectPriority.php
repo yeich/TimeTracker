@@ -34,6 +34,11 @@ class ProjectPriority
      */
     private $projects;
 
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $priority;
+
     public function __construct()
     {
         $this->projects = new ArrayCollection();
@@ -94,6 +99,18 @@ class ProjectPriority
                 $project->setProjectPriority(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getPriority(): ?int
+    {
+        return $this->priority;
+    }
+
+    public function setPriority(int $priority): self
+    {
+        $this->priority = $priority;
 
         return $this;
     }
