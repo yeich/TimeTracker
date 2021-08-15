@@ -1,0 +1,21 @@
+@import '_variables';
+
+.top-bar,
+.top-bar ul {
+  background-color: #fff;
+}
+
+.button {
+  background-color: #fff;
+  color: $gray;
+
+  &:hover {
+    box-shadow: $box_shadow;
+    background-color: #fff;
+    color: $gray;
+  }
+}
+
+label {
+  color: $gray;
+}

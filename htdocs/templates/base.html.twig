@@ -11,9 +11,11 @@
         <title>{% block title %}{% endblock %} | Time Tracker</title>
 
         <link rel="stylesheet" href="{{ asset('public/_vendor/foundation/css/foundation.min.css') }}">
+
+        <link rel="stylesheet" href="{{ asset('public/css/reset.css') }}">
         <link rel="stylesheet" href="{{ asset('public/css/global.css') }}">
-        {% block stylesheets %}
-        {% endblock %}
+
+        {% block stylesheets %}{% endblock %}
     </head>
     <body>
 
@@ -31,7 +33,6 @@
             $(document).foundation();
         </script>
 
-        {% block javascripts %}
-        {% endblock %}
+        {% block javascripts %}{% endblock %}
     </body>
 </html>

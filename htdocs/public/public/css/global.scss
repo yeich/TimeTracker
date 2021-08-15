@@ -40,12 +40,6 @@ body {
   }
 }
 
-.top-bar,
-.top-bar ul {
-  background-color: #fff;
-}
-
-
 .color-black {
   color: #0a0a0a;
 
@@ -60,19 +54,4 @@ body {
   a {
     color: #1779ba;
   }
-}
-
-.button {
-  background-color: #fff;
-  color: $gray;
-
-  &:hover {
-    box-shadow: $box_shadow;
-    background-color: #fff;
-    color: $gray;
-  }
-}
-
-label {
-  color: $gray;
 }
