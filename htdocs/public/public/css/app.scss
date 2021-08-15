@@ -18,6 +18,8 @@
 
       padding: 0 15px;
 
+      width: 600px;
+
       ul {
 
         list-style: none;
@@ -47,6 +49,8 @@
       border: 2px solid $gray;
       padding: 15px;
       border-radius: 30px;
+
+      width: 600px;
 
       &.active-project {
         .project-item-body {
@@ -82,10 +86,15 @@
           font-weight: 500;
           font-size: 20px;
 
+          width: 350px;
+          overflow: hidden;
+          display: block;
+          text-overflow: ellipsis;
+
           >span {
             font-weight: 400;
             font-size: 14px;
-            width: 300px;
+            width: 350px;
             display: block;
             overflow: hidden;
             white-space: nowrap;
@@ -174,6 +183,10 @@
 
           cursor: pointer;
 
+          width: 145px;
+
+          text-align: center;
+
           &:before {
             content: 'Check in';
             font-weight: 500;
@@ -192,6 +205,11 @@
       }
 
       .project-item-footer {
+
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
         .project-item-projectmanagement {
 
           font-weight: 500;
@@ -203,6 +221,14 @@
             border-radius: 10px;
             color: $gray;
           }
+        }
+
+        .project-item-more {
+          padding: 5px 10px;
+          box-shadow: $box_shadow;
+          border-radius: 10px;
+          color: $gray;
+          width: 145px;
         }
       }
     }

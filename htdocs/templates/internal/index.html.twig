@@ -28,10 +28,10 @@
                                 <div class="project-item-header">
                                     <div class="project-item-name">
                                         {{ project.name }}
-{#                                        {% if project.description %}#}
-{#                                            <br/>#}
-{#                                            <span>{{ project.description }}</span>#}
-{#                                        {% endif %}#}
+                                        {% if project.description %}
+                                            <br/>
+                                            <span>{{ project.description }}</span>
+                                        {% endif %}
                                     </div>
                                     <div class="project-item-stats">
                                         <div class="project-item-stats-time">XXXX:XX</div>
@@ -57,6 +57,9 @@
                                     <div class="project-item-projectmanagement">
                                         PM: <a href="mailto:{{ project.management.email }}?subject=%5BTime%20Tracker%20-%20Direct%20Board%5D%20{{ project.name|url_encode }}">{{ project.management.firstname }} {{ project.management.lastname }}</a>
                                     </div>
+                                    <a href="{{ path('app_project_show', {'id': project.id}) }}" target="_blank" class="project-item-more">
+                                        About the project
+                                    </a>
                                 </div>
                             </div>
                         {% endfor %}

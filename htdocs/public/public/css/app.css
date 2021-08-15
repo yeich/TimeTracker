@@ -8,6 +8,7 @@
   justify-content: space-between;
   margin-bottom: 1rem;
   padding: 0 15px;
+  width: 600px;
 }
 #app-index .project-list-wrapper .project-list-sort ul {
   list-style: none;
@@ -30,6 +31,7 @@
   border: 2px solid #707070;
   padding: 15px;
   border-radius: 30px;
+  width: 600px;
 }
 #app-index .project-list-wrapper .project-item.active-project .project-item-body .project-item-checkinout {
   color: rgba(255, 0, 0, 0.66);
@@ -52,11 +54,15 @@
 #app-index .project-list-wrapper .project-item .project-item-header .project-item-name {
   font-weight: 500;
   font-size: 20px;
+  width: 350px;
+  overflow: hidden;
+  display: block;
+  text-overflow: ellipsis;
 }
 #app-index .project-list-wrapper .project-item .project-item-header .project-item-name > span {
   font-weight: 400;
   font-size: 14px;
-  width: 300px;
+  width: 350px;
   display: block;
   overflow: hidden;
   white-space: nowrap;
@@ -119,6 +125,8 @@
   padding: 5px 10px;
   border-radius: 10px;
   cursor: pointer;
+  width: 145px;
+  text-align: center;
 }
 #app-index .project-list-wrapper .project-item .project-item-body .project-item-checkinout:before {
   content: "Check in";
@@ -131,6 +139,11 @@
 #app-index .project-list-wrapper .project-item .project-item-body .project-item-checkinout svg .triangle-stroke {
   fill: #707070;
 }
+#app-index .project-list-wrapper .project-item .project-item-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 #app-index .project-list-wrapper .project-item .project-item-footer .project-item-projectmanagement {
   font-weight: 500;
 }
@@ -140,6 +153,13 @@
   box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.16);
   border-radius: 10px;
   color: #707070;
+}
+#app-index .project-list-wrapper .project-item .project-item-footer .project-item-more {
+  padding: 5px 10px;
+  box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.16);
+  border-radius: 10px;
+  color: #707070;
+  width: 145px;
 }
 
 /*# sourceMappingURL=app.css.map */
