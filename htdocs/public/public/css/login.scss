@@ -1,5 +1,7 @@
+@import '_variables';
+
 .login-wrapper {
-  max-width: 370px;
+  max-width: 400px;
 
   position: absolute;
   top: 50%;
@@ -7,6 +9,26 @@
   transform: translate(-50%, -50%);
 
   a {
-    color: #F15959;
+    color: $brand_color;
+  }
+
+  input {
+    &[type="email"],
+    &[type="password"] {
+      box-shadow: $box_shadow;
+      border-radius: 5px;
+    }
+  }
+
+  button {
+    &[type="submit"] {
+      display: block;
+      width: 100%;
+      background-color: $brand_color;
+      color: #fff;
+      font-weight: 500;
+      margin-top: .5rem;
+      border-radius: 5px;
+    }
   }
 }
