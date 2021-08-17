@@ -17,22 +17,22 @@
                 </div>
                 <div class="grid-x grid-padding-x">
                     <div class="cell">
-                        <label>Email
-                            <input type="email" name="email" id="inputEmail" placeholder="your.name@profq.eu" {% if last_username %}value="{{ last_username }}"{% endif%} autocomplete="email" required autofocus>
+                        <label>Email address
+                            <input type="email" name="email" id="inputEmail" placeholder="Your email address" {% if last_username %}value="{{ last_username }}"{% endif%} autocomplete="email" required autofocus>
                         </label>
                     </div>
                     <div class="cell">
                         <label>Password
-                            <input type="password" name="password" id="inputPassword" placeholder="Password" autocomplete="current-password" required>
+                            <input type="password" name="password" id="inputPassword" placeholder="Your password" autocomplete="current-password" required>
                         </label>
                     </div>
                 </div>
                 <div class="grid-x grid-padding-x">
                     <div class="cell medium-6">
-                        <input name="_remember_me" id="_remember_me" type="checkbox"><label for="_remember_me" style="font-size: 14px">Stay logged in?</label>
+                        <input name="_remember_me" id="_remember_me" type="checkbox"><label for="_remember_me" style="font-size: 14px">Remember me?</label>
                     </div>
                     <div class="cell medium-6 text-right">
-                        <a href="#" style="font-size: 14px">Forgot your password?</a>
+                        <a href="#" style="font-size: 14px">Forgot password?</a>
                     </div>
 
                     <input type="hidden" name="_csrf_token"
