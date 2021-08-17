@@ -77,6 +77,11 @@ class Project
      */
     private $deadline;
 
+    /**
+     * @ORM\Column(type="datetime", nullable=true)
+     */
+    private $finised_at;
+
     public function __construct()
     {
         $this->workers = new ArrayCollection();
@@ -272,6 +277,18 @@ class Project
     public function setDeadline(?\DateTimeInterface $deadline): self
     {
         $this->deadline = $deadline;
+
+        return $this;
+    }
+
+    public function getFinisedAt(): ?\DateTimeInterface
+    {
+        return $this->finised_at;
+    }
+
+    public function setFinisedAt(?\DateTimeInterface $finised_at): self
+    {
+        $this->finised_at = $finised_at;
 
         return $this;
     }
