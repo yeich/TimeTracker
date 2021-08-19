@@ -55,4 +55,29 @@
   background-color: #F15959;
 }
 
+.reset-password-wrapper {
+  max-width: 400px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.reset-password-wrapper a {
+  color: #F15959;
+}
+.reset-password-wrapper input.error {
+  border-color: #F15959;
+}
+.reset-password-wrapper .button {
+  border-radius: 5px;
+  box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.16);
+  color: #fff;
+  font-weight: 500;
+  padding: 15px 35px;
+  background-color: #707070;
+}
+.reset-password-wrapper .button.red-button {
+  background-color: #F15959;
+}
+
 /*# sourceMappingURL=login.css.map */
