@@ -14,6 +14,11 @@
 }
 .login-wrapper input[type=email].error, .login-wrapper input[type=password].error {
   border-color: #F15959;
+  color: #F15959;
+}
+.login-wrapper input[type=email].error::placeholder, .login-wrapper input[type=password].error::placeholder {
+  color: #F15959;
+  opacity: 0.6;
 }
 .login-wrapper button[type=submit] {
   display: block;

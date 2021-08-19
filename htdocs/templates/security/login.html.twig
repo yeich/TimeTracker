@@ -18,14 +18,19 @@
                 <div class="grid-x grid-padding-x">
                     <div class="cell">
                         <label>Email address
-                            <input type="email" name="email" id="inputEmail" placeholder="Your email address" {% if last_username %}value="{{ last_username }}"{% endif%} autocomplete="email" required autofocus>
+                            <input {% if error %}class="error"{% endif %} type="email" name="email" id="inputEmail" placeholder="Your email address" {% if last_username %}value="{{ last_username }}"{% endif%} autocomplete="email" required autofocus>
                         </label>
                     </div>
                     <div class="cell">
                         <label>Password
-                            <input type="password" name="password" id="inputPassword" placeholder="Your password" autocomplete="current-password" required>
+                            <input {% if error %}class="error"{% endif %} type="password" name="password" id="inputPassword" placeholder="Your password" autocomplete="current-password" required>
                         </label>
                     </div>
+                    {% if error %}
+                        <div class="cell color-red text-center" style="margin-bottom: 1rem; font-size: 14px;">
+                            Incorrect email or password. Please try again!
+                        </div>
+                    {% endif %}
                 </div>
                 <div class="grid-x grid-padding-x">
                     <div class="cell medium-6">
@@ -51,7 +56,3 @@
         </div>
     </div>
 {% endblock %}
-
-{#    {% if error %}#}
-{#        <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>#}
-{#    {% endif %}#}

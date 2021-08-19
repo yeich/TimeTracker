@@ -20,6 +20,12 @@
 
       &.error {
         border-color: $brand_color;
+        color: $brand_color;
+
+        &::placeholder {
+          color: $brand_color;
+          opacity: .6;
+        }
       }
     }
   }
