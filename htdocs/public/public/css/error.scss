@@ -1,0 +1,30 @@
+@import '_variables';
+
+.error-wrapper {
+
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  h1 {
+    font-size: 70px;
+    font-weight: 700;
+    white-space: nowrap;
+  }
+
+  .button {
+    border-radius: 5px;
+    box-shadow: $box_shadow;
+    color: #fff;
+    font-weight: 500;
+
+    padding: 15px 35px;
+
+    width: 100%;
+
+    max-width: 400px;
+
+    background-color: $brand_color;
+  }
+}

@@ -1,0 +1,28 @@
+{% extends 'base_simple.html.twig' %}
+
+{% block title %}Error 404{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('public/css/error.css') }}">
+{% endblock %}
+
+{% block body %}
+    <div class="error-wrapper">
+        <div class="grid-container">
+            <div class="grid-x grid-padding-x text-center">
+                <div class="cell">
+                    <h1>Mistakes have been made.<br/>Unknown Error.</h1>
+                </div>
+            </div>
+            <div class="grid-x grid-padding-x" style="margin-top: 5rem;">
+                <div class="cell text-center">
+                    <a href="{{ path('default_index') }}" class="button">Back to home</a>
+                </div>
+            </div>
+        </div>
+        <hr style="max-width: 400px">
+        <div class="text-center powered-by">
+            Powered by <a href="https://profq.eu?source={{ utm_param_profq }}" target="_blank">ProfQ</a>
+        </div>
+    </div>
+{% endblock %}
