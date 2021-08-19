@@ -17,6 +17,10 @@
     &[type="password"] {
       box-shadow: $box_shadow;
       border-radius: 5px;
+
+      &.error {
+        border-color: $brand_color;
+      }
     }
   }
 
@@ -43,6 +47,12 @@
 
   a {
     color: $brand_color;
+  }
+
+  input {
+    &.error {
+      border-color: $brand_color;
+    }
   }
 
   .button {

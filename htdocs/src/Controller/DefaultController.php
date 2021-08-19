@@ -67,4 +67,21 @@ class DefaultController extends AbstractController
 
         return $this->render('default/forgot_password.html.twig');
     }
+
+    /**
+     * @Route("/reset-password/{hash}", name="default_reset_password", methods={"GET", "POST"}, options={"expose"=true})
+     */
+    public function reset_password(Request $request, $hash)
+    {
+
+        if($this->isGranted('ROLE_USER')) {
+            return $this->redirectToRoute('app_index');
+        }
+
+        if($request->isMethod('POST')) {
+
+        }
+
+        return $this->render('default/forgot_password.html.twig');
+    }
 }
