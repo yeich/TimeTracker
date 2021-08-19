@@ -83,6 +83,16 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     private $updatedAt;
 
+    /**
+     * @ORM\Column(type="string", length=64, nullable=true)
+     */
+    private $password_reset_hash;
+
+    /**
+     * @ORM\Column(type="datetime", nullable=true)
+     */
+    private $password_reset_timestamp;
+
     public function __construct()
     {
         $this->projectsManagement = new ArrayCollection();
@@ -256,5 +266,34 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function getImage()
     {
         return $this->image;
+    }
+
+    public function getPasswordResetHash(): ?string
+    {
+        return $this->password_reset_hash;
+    }
+
+    public function setPasswordResetHash(?string $password_reset_hash): self
+    {
+        $this->password_reset_hash = $password_reset_hash;
+        $this->password_reset_timestamp = new \DateTime('now');
+
+        return $this;
+    }
+
+    public function getPasswordResetTimestamp(): ?\DateTimeInterface
+    {
+        return $this->password_reset_timestamp;
+    }
+
+    public function setPasswordResetTimestamp(?\DateTimeInterface $password_reset_timestamp): self
+    {
+        $this->password_reset_timestamp = $password_reset_timestamp;
+
+        return $this;
+    }
+
+    public function generateHash($length = 64): string {
+        return bin2hex(random_bytes($length / 2));
     }
 }

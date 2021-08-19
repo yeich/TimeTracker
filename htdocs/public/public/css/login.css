@@ -22,4 +22,26 @@
   border-radius: 5px;
 }
 
+.forgot-password-wrapper {
+  max-width: 400px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.forgot-password-wrapper a {
+  color: #F15959;
+}
+.forgot-password-wrapper .button {
+  border-radius: 5px;
+  box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.16);
+  color: #fff;
+  font-weight: 500;
+  padding: 15px 35px;
+  background-color: #707070;
+}
+.forgot-password-wrapper .button.red-button {
+  background-color: #F15959;
+}
+
 /*# sourceMappingURL=login.css.map */

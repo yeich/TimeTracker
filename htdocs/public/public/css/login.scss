@@ -32,3 +32,31 @@
     }
   }
 }
+
+.forgot-password-wrapper {
+  max-width: 400px;
+
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  a {
+    color: $brand_color;
+  }
+
+  .button {
+    border-radius: 5px;
+    box-shadow: $box_shadow;
+    color: #fff;
+    font-weight: 500;
+
+    padding: 15px 35px;
+
+    background-color: $gray;
+
+    &.red-button {
+      background-color: $brand_color;
+    }
+  }
+}

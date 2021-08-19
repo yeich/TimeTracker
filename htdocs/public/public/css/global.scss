@@ -4,6 +4,14 @@ body {
   color: $gray;
 }
 
+.font-bold {
+  font-weight: 700;
+}
+
+.font-medium {
+  font-weight: 500;
+}
+
 #responsive-menu {
   box-shadow: $box_shadow;
 
@@ -42,10 +50,10 @@ body {
 
 .color-black {
   color: #0a0a0a;
+}
 
-  &:hover {
-    color: lighten(#0a0a0a, 20)
-  }
+.color-red {
+  color: $brand_color;
 }
 
 h2 {

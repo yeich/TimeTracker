@@ -82,6 +82,11 @@ class Project
      */
     private $finised_at;
 
+    /**
+     * @ORM\Column(type="datetime", nullable=true)
+     */
+    private $starting_at;
+
     public function __construct()
     {
         $this->workers = new ArrayCollection();
@@ -289,6 +294,18 @@ class Project
     public function setFinisedAt(?\DateTimeInterface $finised_at): self
     {
         $this->finised_at = $finised_at;
+
+        return $this;
+    }
+
+    public function getStartingAt(): ?\DateTimeInterface
+    {
+        return $this->starting_at;
+    }
+
+    public function setStartingAt(?\DateTimeInterface $starting_at): self
+    {
+        $this->starting_at = $starting_at;
 
         return $this;
     }

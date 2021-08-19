@@ -27,7 +27,7 @@
     </head>
     <body>
 
-        {% if route_name != 'app_login' %}
+        {% if route_name != 'app_login' and route_name != 'default_forgot_password' %}
             {% include '_components/navbar.html.twig' %}
         {% endif %}
 
