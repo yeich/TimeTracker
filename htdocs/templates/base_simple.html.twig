@@ -15,17 +15,9 @@
         <link rel="stylesheet" href="{{ asset('public/css/reset.css') }}">
         <link rel="stylesheet" href="{{ asset('public/css/global.css') }}">
 
-        <style>
-            .grid-container {
-                margin-top: 30px;
-            }
-        </style>
-
         {% block stylesheets %}{% endblock %}
     </head>
     <body>
-
-        {% include '_components/navbar.html.twig' %}
 
         {% block body %}{% endblock %}
 
