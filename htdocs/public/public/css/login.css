@@ -1,13 +1,18 @@
-.login-wrapper {
+.login-wrapper,
+.forgot-password-wrapper,
+.reset-password-wrapper {
   max-width: 400px;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
-.login-wrapper a {
+.login-wrapper a,
+.forgot-password-wrapper a,
+.reset-password-wrapper a {
   color: #F15959;
 }
+
 .login-wrapper input[type=email], .login-wrapper input[type=password] {
   box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.16);
   border-radius: 5px;
@@ -30,44 +35,11 @@
   border-radius: 5px;
 }
 
-.forgot-password-wrapper {
-  max-width: 400px;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-.forgot-password-wrapper a {
-  color: #F15959;
-}
-.forgot-password-wrapper input.error {
-  border-color: #F15959;
-}
-.forgot-password-wrapper .button {
-  border-radius: 5px;
-  box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.16);
-  color: #fff;
-  font-weight: 500;
-  padding: 15px 35px;
-  background-color: #707070;
-}
-.forgot-password-wrapper .button.red-button {
-  background-color: #F15959;
-}
-
-.reset-password-wrapper {
-  max-width: 400px;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-.reset-password-wrapper a {
-  color: #F15959;
-}
+.forgot-password-wrapper input.error,
 .reset-password-wrapper input.error {
   border-color: #F15959;
 }
+.forgot-password-wrapper .button,
 .reset-password-wrapper .button {
   border-radius: 5px;
   box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.16);
@@ -76,6 +48,7 @@
   padding: 15px 35px;
   background-color: #707070;
 }
+.forgot-password-wrapper .button.red-button,
 .reset-password-wrapper .button.red-button {
   background-color: #F15959;
 }
