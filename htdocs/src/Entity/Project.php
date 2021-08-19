@@ -41,8 +41,7 @@ class Project
     private $workers;
 
     /**
-     * @ORM\ManyToOne(targetEntity=HourlyRate::class, inversedBy="projects")
-     * @ORM\JoinColumn(nullable=true)
+     * @ORM\Column(type="integer", nullable=true)
      */
     private $hourly_rate;
 
@@ -80,12 +79,7 @@ class Project
     /**
      * @ORM\Column(type="datetime", nullable=true)
      */
-    private $finised_at;
-
-    /**
-     * @ORM\Column(type="datetime", nullable=true)
-     */
-    private $starting_at;
+    private $finished_at;
 
     public function __construct()
     {
@@ -166,12 +160,12 @@ class Project
         return $this;
     }
 
-    public function getHourlyRate(): ?HourlyRate
+    public function getHourlyRate(): int
     {
         return $this->hourly_rate;
     }
 
-    public function setHourlyRate(?HourlyRate $hourly_rate): self
+    public function setHourlyRate(?int $hourly_rate): self
     {
         $this->hourly_rate = $hourly_rate;
 
@@ -286,26 +280,14 @@ class Project
         return $this;
     }
 
-    public function getFinisedAt(): ?\DateTimeInterface
+    public function getFinishedAt(): ?\DateTimeInterface
     {
-        return $this->finised_at;
+        return $this->finished_at;
     }
 
-    public function setFinisedAt(?\DateTimeInterface $finised_at): self
+    public function setFinishedAt(?\DateTimeInterface $finished_at): self
     {
-        $this->finised_at = $finised_at;
-
-        return $this;
-    }
-
-    public function getStartingAt(): ?\DateTimeInterface
-    {
-        return $this->starting_at;
-    }
-
-    public function setStartingAt(?\DateTimeInterface $starting_at): self
-    {
-        $this->starting_at = $starting_at;
+        $this->finished_at = $finished_at;
 
         return $this;
     }
