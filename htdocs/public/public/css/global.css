@@ -42,7 +42,9 @@ body {
   color: #F15959;
 }
 
-h2 {
+h2,
+h3,
+h4 {
   font-weight: 500;
 }
 

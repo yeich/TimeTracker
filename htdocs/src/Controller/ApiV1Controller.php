@@ -60,7 +60,7 @@ class ApiV1Controller extends AbstractController
                     'type' => 'checkout',
                     'data' => [
                         'project_id' => $timestamp->getProject()->getId(),
-                        'total_time' => ($now->diff($cloned))->format('%H:%I')
+                        'total_time' => ($now->diff($cloned))->format('%H:%I:%S')
                     ]
                 ]);
             }
@@ -122,14 +122,28 @@ class ApiV1Controller extends AbstractController
                 'type' => 'checkin',
                 'data' => [
                     'project_id' => $timestamp->getProject()->getId(),
-                    'total_time' => ($now->diff($cloned))->format('%H:%I')
+                    'project_name' => $timestamp->getProject()->getName(),
+                    'total_time' => ($now->diff($cloned))->format('%H:%I:%S')
                 ]
             ]);
         } else {
+
+            $now = new \DateTime('now');
+            $cloned = clone $now;
+
+            foreach ($project->getTimestampProjects() as $project_timestamp) {
+                $cloned->add($project_timestamp->getStartStamp()->diff(($project_timestamp->getEndStamp()) ? $project_timestamp->getEndStamp() : new \DateTime('now')));
+            }
+
             return new JsonResponse([
                 'error' => false,
                 'msg' => 'success',
-                'type' => 'checkin'
+                'type' => 'checkin',
+                'data' => [
+                    'project_id' => $timestamp->getProject()->getId(),
+                    'project_name' => $timestamp->getProject()->getName(),
+                    'total_time' => ($now->diff($cloned))->format('%H:%I:%S')
+                ]
             ]);
         }
     }

@@ -1,6 +1,95 @@
 @import '_variables';
 
 #app-index {
+
+  display: flex;
+  justify-content: space-between;
+  padding: .5rem;
+
+  max-width: 1200px;
+  margin: 2rem auto 0;
+
+  .project-tracking {
+
+    padding: 15px;
+    border-radius: 30px;
+
+    box-shadow: $box_shadow;
+
+    width: 550px;
+
+    &.active-tracking {
+
+      .project-tracking-checkout {
+        display: block;
+      }
+
+      .project-tracking-current-time,
+      .project-tracking-time {
+        &:before {
+          content: none;
+        }
+      }
+    }
+
+    .project-tracking-current-time,
+    .project-tracking-time {
+      &:before {
+        content: '-|-';
+      }
+    }
+
+    .project-tracking-tracking-time-wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .project-tracking-checkout {
+
+      border: 1px solid $red;
+      box-shadow: $box_shadow;
+      padding: 5px 10px;
+      border-radius: 10px;
+
+      cursor: pointer;
+
+      width: 145px;
+
+      text-align: center;
+
+      display: none;
+
+      &:before {
+        content: 'Check out';
+        font-weight: 500;
+        color: $red;
+      }
+
+      svg {
+
+        width: 8px;
+        height: 10px;
+
+        .triangle-stroke {
+          fill: $red;
+        }
+      }
+    }
+
+    .project-tracking-project-name {
+      border: 1px solid $gray;
+      border-radius: 10px;
+
+      padding: 0 10px 5px;
+
+      min-width: 150px;
+      box-shadow: $box_shadow;
+
+      display: inline-flex;
+    }
+  }
+
   .project-list-wrapper {
 
     .has-tip {
@@ -18,7 +107,7 @@
 
       padding: 0 15px;
 
-      width: 600px;
+      width: 500px;
 
       ul {
 
@@ -50,7 +139,7 @@
       padding: 15px;
       border-radius: 30px;
 
-      width: 600px;
+      width: 500px;
 
       &.disabled-project {
 
@@ -67,14 +156,14 @@
         .project-item-body {
           .project-item-checkinout {
 
-            color: rgba(255,0,0,.66);
+            color: $red;
 
             &:before {
               content: 'Check out';
             }
 
             .triangle-stroke {
-              fill: rgba(255,0,0,.66);
+              fill: $red;
             }
           }
         }
@@ -97,7 +186,7 @@
           font-weight: 500;
           font-size: 20px;
 
-          width: 350px;
+          width: 250px;
           overflow: hidden;
           display: block;
           text-overflow: ellipsis;

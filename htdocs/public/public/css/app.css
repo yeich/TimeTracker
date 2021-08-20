@@ -1,3 +1,62 @@
+#app-index {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem;
+  max-width: 1200px;
+  margin: 2rem auto 0;
+}
+#app-index .project-tracking {
+  padding: 15px;
+  border-radius: 30px;
+  box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.16);
+  width: 550px;
+}
+#app-index .project-tracking.active-tracking .project-tracking-checkout {
+  display: block;
+}
+#app-index .project-tracking.active-tracking .project-tracking-current-time:before,
+#app-index .project-tracking.active-tracking .project-tracking-time:before {
+  content: none;
+}
+#app-index .project-tracking .project-tracking-current-time:before,
+#app-index .project-tracking .project-tracking-time:before {
+  content: "-|-";
+}
+#app-index .project-tracking .project-tracking-tracking-time-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+#app-index .project-tracking .project-tracking-checkout {
+  border: 1px solid rgba(255, 0, 0, 0.66);
+  box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.16);
+  padding: 5px 10px;
+  border-radius: 10px;
+  cursor: pointer;
+  width: 145px;
+  text-align: center;
+  display: none;
+}
+#app-index .project-tracking .project-tracking-checkout:before {
+  content: "Check out";
+  font-weight: 500;
+  color: rgba(255, 0, 0, 0.66);
+}
+#app-index .project-tracking .project-tracking-checkout svg {
+  width: 8px;
+  height: 10px;
+}
+#app-index .project-tracking .project-tracking-checkout svg .triangle-stroke {
+  fill: rgba(255, 0, 0, 0.66);
+}
+#app-index .project-tracking .project-tracking-project-name {
+  border: 1px solid #707070;
+  border-radius: 10px;
+  padding: 0 10px 5px;
+  min-width: 150px;
+  box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.16);
+  display: inline-flex;
+}
 #app-index .project-list-wrapper .has-tip {
   font-weight: unset;
   border-bottom: 0;
@@ -8,7 +67,7 @@
   justify-content: space-between;
   margin-bottom: 1rem;
   padding: 0 15px;
-  width: 600px;
+  width: 500px;
 }
 #app-index .project-list-wrapper .project-list-sort ul {
   list-style: none;
@@ -31,7 +90,7 @@
   border: 2px solid #707070;
   padding: 15px;
   border-radius: 30px;
-  width: 600px;
+  width: 500px;
 }
 #app-index .project-list-wrapper .project-item.disabled-project {
   border-color: rgba(112, 112, 112, 0.4);
@@ -61,7 +120,7 @@
 #app-index .project-list-wrapper .project-item .project-item-header .project-item-name {
   font-weight: 500;
   font-size: 20px;
-  width: 350px;
+  width: 250px;
   overflow: hidden;
   display: block;
   text-overflow: ellipsis;

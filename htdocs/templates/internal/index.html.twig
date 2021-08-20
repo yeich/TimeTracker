@@ -7,70 +7,142 @@
 {% endblock %}
 
 {% block body %}
-    <div class="grid-container fluid" id="app-index">
-        <div class="grid-x grid-margin-x">
-            <div class="cell large-6">
-                <h2>Current Projects</h2>
-                
-                <div class="project-list-wrapper">
-                    <div class="project-list-sort">
-                        <div style="visibility: hidden">Sort by</div>
-                        <ul>
-                            <li data-sort-term="time">Time Total</li>
-                            <li data-sort-term="priority">Priority</li>
-                            <li data-sort-term="status">Status</li>
-                        </ul>
-                    </div>
+    <div id="app-index">
+        <div>
+            <h2>Current Projects</h2>
 
-                    <div class="project-list">
-                        {% for project in projects %}
-                            <div class="project-item{% if active_project %} {% if project.id == active_project %}active-project{% else %}disabled-project{% endif %}{% endif %}" data-project-id="{{ project.id }}">
-                                <div class="project-item-header">
-                                    <div class="project-item-name">
-                                        {{ project.name }}
-                                        {% if project.description %}
-                                            <br/>
-                                            <span>{{ project.description }}</span>
-                                        {% endif %}
-                                    </div>
-                                    <div class="project-item-stats">
-                                        <div class="project-item-stats-time">{{ project.total_time }}</div>
-                                        <div data-tooltip class="top project-item-stats-prio" data-click-open="false" tabindex="2" title="{{ project.projectPriority.name }}">
-                                            <span style="background-color: {{ project.projectPriority.colorCode }}"></span>
-                                        </div>
-                                        <div data-tooltip class="top project-item-stats-status" data-click-open="false" tabindex="2" title="{{ project.state.name }}">
-                                            <span {% if project.state.filledQuarters >= 1 %}class="filled"{% endif %}></span>
-                                            <span {% if project.state.filledQuarters >= 2 %}class="filled"{% endif %}></span>
-                                            <span {% if project.state.filledQuarters == 3 %}class="filled"{% endif %}></span>
-                                        </div>
-                                    </div>
+            <div class="project-list-wrapper">
+                <div class="project-list-sort">
+                    <div style="visibility: hidden">Sort by</div>
+                    <ul>
+                        <li data-sort-term="time">Time Total</li>
+                        <li data-sort-term="priority">Priority</li>
+                        <li data-sort-term="status">Status</li>
+                    </ul>
+                </div>
+
+                <div class="project-list">
+                    {% for project in projects %}
+                        <div class="project-item{% if active_project %} {% if project.id == active_project.id %}active-project{% else %}disabled-project{% endif %}{% endif %}" data-project-id="{{ project.id }}">
+                            <div class="project-item-header">
+                                <div class="project-item-name">
+                                    {{ project.name }}
+                                    {#                                        {% if project.description %}#}
+                                    {#                                            <br/>#}
+                                    {#                                            <span>{{ project.description }}</span>#}
+                                    {#                                        {% endif %}#}
                                 </div>
-                                <div class="project-item-body">
-                                    <div class="project-item-deadline">
-                                        Deadline: {% if project.deadline %}{{ project.deadline|date("d.m.Y") }}{% else %}Unknown{% endif %}
+                                <div class="project-item-stats">
+                                    <div class="project-item-stats-time">{{ project.total_time }}</div>
+                                    <div data-tooltip class="top project-item-stats-prio" data-click-open="false" tabindex="2" title="{{ project.projectPriority.name }}">
+                                        <span style="background-color: {{ project.projectPriority.colorCode }}"></span>
                                     </div>
-                                    <div class="project-item-checkinout" data-type="{% if active_project %}{% if project.id == active_project %}checkout{% else %}checkin{% endif %}{% else %}checkin{% endif %}">
-                                        {% include '_components/checkinout-svg.html.twig' %}
+                                    <div data-tooltip class="top project-item-stats-status" data-click-open="false" tabindex="2" title="{{ project.state.name }}">
+                                        <span {% if project.state.filledQuarters >= 1 %}class="filled"{% endif %}></span>
+                                        <span {% if project.state.filledQuarters >= 2 %}class="filled"{% endif %}></span>
+                                        <span {% if project.state.filledQuarters == 3 %}class="filled"{% endif %}></span>
                                     </div>
-                                </div>
-                                <div class="project-item-footer">
-                                    <div class="project-item-projectmanagement">
-                                        PM: <a href="mailto:{{ project.management.email }}?subject=%5BTime%20Tracker%20-%20Direct%20Board%5D%20{{ project.name|url_encode }}">{{ project.management.firstname }} {{ project.management.lastname }}</a>
-                                    </div>
-                                    <a href="{{ path('app_project_show', {'id': project.id}) }}" target="_blank" class="project-item-more">
-                                        About the project
-                                    </a>
                                 </div>
                             </div>
-                        {% endfor %}
-                    </div>
+                            <div class="project-item-body">
+                                <div class="project-item-deadline">
+                                    Deadline: {% if project.deadline %}{{ project.deadline|date("d.m.Y") }}{% else %}Unknown{% endif %}
+                                </div>
+                                <div class="project-item-checkinout" data-checkinout="true" data-type="{% if active_project %}{% if project.id == active_project.id %}checkout{% else %}checkin{% endif %}{% else %}checkin{% endif %}">
+                                    {% include '_components/checkinout-svg.html.twig' %}
+                                </div>
+                            </div>
+                            <div class="project-item-footer">
+                                <div class="project-item-projectmanagement">
+                                    PM: <a href="mailto:{{ project.management.email }}?subject=%5BTime%20Tracker%20-%20Direct%20Board%5D%20{{ project.name|url_encode }}">{{ project.management.firstname }} {{ project.management.lastname }}</a>
+                                </div>
+                                <a href="{{ path('app_project_show', {'id': project.id}) }}" target="_blank" class="project-item-more">
+                                    About the project
+                                </a>
+                            </div>
+                        </div>
+                    {% endfor %}
                 </div>
             </div>
-            <div class="cell large-5 large-offset-1">2</div>
+        </div>
+        <div>
+            <div class="project-tracking{% if active_project %} active-tracking{% endif %}" {% if active_project %}data-project-id="{{ active_project.id }}"{% endif %}>
+                <div>
+                    <h2>Time: <span class="project-tracking-current-time">{% if active_project %}{{ active_project.current_time }}{% endif %}</span></h2>
+                </div>
+                <div class="project-tracking-tracking-time-wrapper">
+                    <h4>Project Time: <span class="project-tracking-time">{% if active_project %}{{ active_project.total_time }}{% endif %}</span></h4>
+
+                    <div class="project-tracking-checkout" {% if active_project %}data-type="checkout" data-checkinout="true"{% endif %}>
+                        {% include '_components/checkinout-svg.html.twig' %}
+                    </div>
+                </div>
+                <div>
+                    <h4>Project: <span class="project-tracking-project-name">{% if active_project %}{{ active_project.name }}{% else %}none{% endif %}</span></h4>
+                </div>
+            </div>
         </div>
     </div>
 {% endblock %}
 
 {% block javascripts %}
+    <script>
+
+        let interval;
+
+        {% if active_project %}
+            $(() => {
+                interval = setInterval(() => {
+
+                    let $current_time = $('.project-tracking-current-time');
+
+                    let time = $current_time.text().split(':');
+
+                    let hours = time[0];
+                    let minutes = time[1];
+                    let seconds = time[2];
+
+                    seconds++;
+
+                    if(seconds === 60) {
+                        minutes++;
+                        seconds = 0;
+                    }
+
+                    if(minutes === 60) {
+                        hours++;
+                        minutes = 0;
+                    }
+
+                    $current_time.text(hours.toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping:false}) + ':' + minutes.toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping:false}) + ':' + seconds.toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping:false}));
+
+
+                    let $total_time = $('.project-tracking-time');
+
+                    time = $total_time.text().split(':');
+
+                    hours = time[0];
+                    minutes = time[1];
+                    seconds = time[2];
+
+                    seconds++;
+
+                    if(seconds === 60) {
+                        minutes++;
+                        seconds = 0;
+                    }
+
+                    if(minutes === 60) {
+                        hours++;
+                        minutes = 0;
+                    }
+
+                    $total_time.text(hours.toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping:false}) + ':' + minutes.toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping:false}) + ':' + seconds.toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping:false}));
+                    $('.project-item.active-project').find('.project-item-stats-time').text(hours.toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping:false}) + ':' + minutes.toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping:false}) + ':' + seconds.toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping:false}));
+                }, 1000)
+            })
+        {% endif %}
+    </script>
+
     <script src="{{ asset('public/js/app-index.js') }}"></script>
 {% endblock %}
